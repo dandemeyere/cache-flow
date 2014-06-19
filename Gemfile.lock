@@ -1,0 +1,44 @@
+PATH
+  remote: .
+  specs:
+    cache-flow (0.0.1)
+      business_time
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activesupport (4.1.1)
+      i18n (~> 0.6, >= 0.6.9)
+      json (~> 1.7, >= 1.7.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.1)
+      tzinfo (~> 1.1)
+    business_time (0.7.3)
+      activesupport (>= 3.1.0)
+      tzinfo
+    diff-lcs (1.2.5)
+    i18n (0.6.9)
+    json (1.8.1)
+    minitest (5.3.5)
+    rspec (3.0.0)
+      rspec-core (~> 3.0.0)
+      rspec-expectations (~> 3.0.0)
+      rspec-mocks (~> 3.0.0)
+    rspec-core (3.0.1)
+      rspec-support (~> 3.0.0)
+    rspec-expectations (3.0.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.0.0)
+    rspec-mocks (3.0.1)
+      rspec-support (~> 3.0.0)
+    rspec-support (3.0.0)
+    thread_safe (0.3.4)
+    tzinfo (1.2.1)
+      thread_safe (~> 0.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  cache-flow!
+  rspec
