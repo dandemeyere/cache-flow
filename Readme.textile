@@ -9,9 +9,7 @@
 
 
 ### Rails Caching Background
-Rails cache store documentation here: http://api.rubyonrails.org/classes/ActiveSupport/Cache/Store.html
-
-When using caching methods in Rails, there are two common cache busting techniques. One is to use a cache key that busts itself. Example:
+When working with [caching in Rails](http://api.rubyonrails.org/classes/ActiveSupport/Cache/Store.html), there are two common cache busting techniques. One is to use a cache key that busts itself. Example:
 `Rails.cache.fetch("item-path-#{self.id}-#{Date.today.to_s}") { UrlBuilder.new(self).build }`
 
 The cache key generated looks like this: `"item-path-959595-2014-06-18"`. In this example, the first time you call `Rails.cache.fetch`, it will store the returned value from `UrlBuilder.new(self).build`  in your cache store and it will be accessible using the cache key you provided. For subsequent `Rails.cache.fetch` calls, it will first look in cache (before executing the code in the block) to see if there's a value for the cache key and if so, it will return the value from memcached (or whatever your cache store is). This is the essence of caching - getting the same value without having to execute the code every time. If the code you're executing is costly (ex: pulling from the database), caching can yield great performance gains.
