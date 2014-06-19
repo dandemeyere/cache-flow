@@ -1,3 +1,6 @@
+require 'active_support'
+require 'active_support/time'
+
 class CacheFlow
   # Put all these constants into a configurable setting hash
   TIME_ZONE = "Pacific Time (US & Canada)"

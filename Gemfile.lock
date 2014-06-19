@@ -1,25 +1,19 @@
 PATH
   remote: .
   specs:
-    cache-flow (0.0.1)
-      business_time
+    cache-flow (0.0.3)
+      activesupport (~> 3.1.0, >= 3.1.0)
+      i18n (= 0.6.9)
+      tzinfo (= 0.3.38)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (4.1.1)
-      i18n (~> 0.6, >= 0.6.9)
-      json (~> 1.7, >= 1.7.7)
-      minitest (~> 5.1)
-      thread_safe (~> 0.1)
-      tzinfo (~> 1.1)
-    business_time (0.7.3)
-      activesupport (>= 3.1.0)
-      tzinfo
+    activesupport (3.1.12)
+      multi_json (~> 1.0)
     diff-lcs (1.2.5)
     i18n (0.6.9)
-    json (1.8.1)
-    minitest (5.3.5)
+    multi_json (1.10.1)
     rspec (3.0.0)
       rspec-core (~> 3.0.0)
       rspec-expectations (~> 3.0.0)
@@ -32,13 +26,11 @@ GEM
     rspec-mocks (3.0.1)
       rspec-support (~> 3.0.0)
     rspec-support (3.0.0)
-    thread_safe (0.3.4)
-    tzinfo (1.2.1)
-      thread_safe (~> 0.1)
+    tzinfo (0.3.38)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   cache-flow!
-  rspec
+  rspec (= 3.0.0)

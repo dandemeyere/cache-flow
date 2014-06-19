@@ -7,6 +7,14 @@
 * Add background
 * Install it in thredUP's web app to ensure the gem works as intended
 
+### What is Cache Flow?
+Cache Flow is a gem that helps you distribute when your cache expires over a defined period of time. The problem this attempts to solve is detailed below, but in essence this gives you the ability to bust your cache randomly so that your cache busting all at once doesn't cause large DB CPU spikes (like in the screenshot below).
+
+### Install
+
+
+### Usage
+`CacheFlow.new.generate_expiry` returns a number (seconds from now) that falls between the time range you want cache to expire within. For us, that's 1-4am PST when the server's traffic load is really light.
 
 ### Rails Caching Background
 When working with [caching in Rails](http://api.rubyonrails.org/classes/ActiveSupport/Cache/Store.html), there are two common cache busting techniques. One is to use a cache key that busts itself. Example:
@@ -48,6 +56,3 @@ Rails.cache.fetch("any_unique_key", expires_in: 3.minutes) { buster_bluth }
 ```
 
 ![http://blackathlete.net/wp-content/uploads/2013/12/cash.gif](http://blackathlete.net/wp-content/uploads/2013/12/cash.gif)
-
-### Straight Cache Homey
-Straight Cache Homey is my quick and fun way to address this issue. It returns to you a random expiry time that falls between a defined time range you want cache to expire. For us, that's 1-4am PST when the server's load is really light. Ideally, cache keys will bust randomly throughout this time and the large DB CPU spikes in the screenshot above will be distributed evenly throughout that time.
