@@ -1,10 +1,5 @@
 # Cache Flow
 
-### To Do Before Publishing
-* Make all the current constants configurable (I like how business_time does it)
-* Add thorough tests
-* Install it in thredUP's web app to ensure the gem works as intended
-
 ### What is Cache Flow?
 Cache Flow is a gem that helps you distribute when your cache expires over a defined period of time. The problem this attempts to solve is detailed below, but in essence this gives you the ability to bust your cache randomly so that your cache doesn't bust all at the same time (ex: using the current day as the cache key) resulting in large DB CPU spikes (like in the screenshot below).
 
@@ -71,3 +66,8 @@ Rails.cache.fetch("any_unique_key", expires_in: 3.minutes) { buster_bluth }
 This is why CacheFlow was created. We wanted to utilize `expires_in` functionality to manage when our cache busts in a predictable way. With CacheFlow, you don't have to worry about when your cache store will bust - you just let CacheFlow take care of that. Straight cache, homey.
 
 ![http://blackathlete.net/wp-content/uploads/2013/12/cash.gif](http://blackathlete.net/wp-content/uploads/2013/12/cash.gif)
+
+### To Do
+* Allow time period to bridge the night (ex: hour_range_start: 21, hour_range_end: 6)
+* Add thorough tests (use Delorean to create very specific example tests)
+* Add validations

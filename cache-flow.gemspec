@@ -1,12 +1,12 @@
 Gem::Specification.new do |s|
   s.name        = 'cache-flow'
-  s.version     = '0.0.4'
+  s.version     = '0.0.5'
   s.date        = '2014-06-18'
   s.summary     = 'A gem to manage when your cache expires.'
   s.description = 'Define a window of time to have all your cache expire randomly within.'
   s.authors     = ['Dan DeMeyere']
   s.email       = 'dan.demeyere@gmail.com'
-  s.files       = ['lib/cache-flow.rb']
+  s.files       = `git ls-files`.split("\n")
   s.homepage    = 'https://github.com/dandemeyere/cache-flow'
   s.license     = 'MIT'
   s.add_dependency('activesupport','>= 3.1.0')
