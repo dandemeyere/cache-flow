@@ -35,7 +35,7 @@ end
 
 ```
 
-So what does Cache Flow do? It generates a random expiration time in between the range of time you configured. The Rails cache `expires_in` option accepts a number that is seconds from now that the cache should expire. For us, we chose 1-4am PST for the defined range of when we want our cache to expire since our server's traffic load is light during that window of time.
+So what does Cache Flow do? It generates a random expiration time in between the range of time you configured from now (random time in the future in between your defined range - Time.now.to_i). The Rails cache `expires_in` option accepts a number that is seconds from now that the cache should expire so we chose 1-4am PST for the defined range of when we want our cache to expire since our server's traffic load is light during that window of time.
 
 ### Background - Straight Cache Homey
 To understand the problem Cache Flow is solving, it's helpful to under [how caching works in Rails](http://api.rubyonrails.org/classes/ActiveSupport/Cache/Store.html). There are two common cache busting techniques for the Rails cache store. The first is to use a dynamic cache key that busts itself. Example:
