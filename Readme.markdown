@@ -3,20 +3,31 @@
 ### To Do Before Publishing
 * Make all the current constants configurable (I like how business_time does it)
 * Add thorough tests
-* Add usage guide
-* Add background
 * Install it in thredUP's web app to ensure the gem works as intended
 
 ### What is Cache Flow?
 Cache Flow is a gem that helps you distribute when your cache expires over a defined period of time. The problem this attempts to solve is detailed below, but in essence this gives you the ability to bust your cache randomly so that your cache busting all at once doesn't cause large DB CPU spikes (like in the screenshot below).
 
-### Install
-
-
 ### Usage
-`CacheFlow.new.generate_expiry` returns a number (seconds from now) that falls between the time range you want cache to expire within. For us, that's 1-4am PST when the server's traffic load is really light.
+* Install the gem
 
-### Rails Caching Background
+```shell
+gem install cache-flow
+```
+
+* Open up your console
+
+```irb
+# If in irb, you'll need to do the following
+require 'cache-flow'
+
+# Try the following
+CacheFlow.new.generate_expiry
+```
+
+This should return a number (seconds from now) that falls between the time range you want cache to expire within. For us, that's 1-4am PST when the server's traffic load is really light.
+
+### The background - Straight Cache Homey
 When working with [caching in Rails](http://api.rubyonrails.org/classes/ActiveSupport/Cache/Store.html), there are two common cache busting techniques. One is to use a cache key that busts itself. Example:
 `Rails.cache.fetch("item-path-#{self.id}-#{Date.today.to_s}") { UrlBuilder.new(self).build }`
 
