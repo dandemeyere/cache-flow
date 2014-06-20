@@ -16,6 +16,15 @@ gem install cache-flow
 # If in irb, you'll need to do the following
 require 'cache-flow'
 
+# Configure CacheFlow in your initializers (config/initializers/cache_flow.rb):
+CacheFlow.configure do |config|
+  config.default_options = {
+    time_zone: "Eastern Time (US & Canada)",
+    hour_range_start: 17,
+    hour_range_end: 20
+  }
+end
+
 # Try the following
 CacheFlow.new.generate_expiry
 
@@ -23,12 +32,13 @@ CacheFlow.new.generate_expiry
 Rails.cache("count_of_never_nudes_in_world", expires_in: CacheFlow.new.generate_expiry) do
   "Dozens!"
 end
+
 ```
 
-The `expires_in` option accepts a number that is seconds from now that the cache should expire. For us, we chose 1-4am PST for the defined range of when we want our cache to expire since our server's traffic load is light during that window of time.
+So what does Cache Flow do? It generates a random expiration time in between the range of time you configured. The Rails cache `expires_in` option accepts a number that is seconds from now that the cache should expire. For us, we chose 1-4am PST for the defined range of when we want our cache to expire since our server's traffic load is light during that window of time.
 
 ### Background - Straight Cache Homey
-To understand the problem CacheFlow is solving, it's helpful to under [how caching works in Rails](http://api.rubyonrails.org/classes/ActiveSupport/Cache/Store.html). There are two common cache busting techniques for the Rails cache store. The first is to use a dynamic cache key that busts itself. Example:
+To understand the problem Cache Flow is solving, it's helpful to under [how caching works in Rails](http://api.rubyonrails.org/classes/ActiveSupport/Cache/Store.html). There are two common cache busting techniques for the Rails cache store. The first is to use a dynamic cache key that busts itself. Example:
 `Rails.cache.fetch("item-path-#{self.id}-#{Date.today.to_s}") { UrlBuilder.new(self).build }`
 
 The cache key generated looks like this: `"item-path-959595-2014-06-18"`. In this example, the first time you call `Rails.cache.fetch`, it will store the returned value from `UrlBuilder.new(self).build`  in your cache store and it will be accessible using the cache key you provided. For subsequent `Rails.cache.fetch` calls, it will first look in cache (before executing the code in the block) to see if there's a value for the cache key and if so, it will return the value from memcached (or whatever your cache store is) without executing the code within the block you provide to `Rails.cache.fetch`. This is the essence of caching - getting the same value without having to execute the code every time. If the code you're executing is costly (ex: pulling from the database), caching can yield great performance gains.
@@ -63,7 +73,7 @@ Rails.cache.fetch("any_unique_key", expires_in: 3.minutes) { buster_bluth }
 # I'm a monster!
 # => "Hey Brother"
 ```
-This is why CacheFlow was created. We wanted to utilize `expires_in` functionality to manage when our cache busts in a predictable way. With CacheFlow, you don't have to worry about when your cache store will bust - you just let CacheFlow take care of that. Straight cache, homey.
+This is why Cache Flow was created. We wanted to utilize `expires_in` functionality to manage when our cache busts in a predictable way. With Cache Flow, you don't have to worry about when your cache store will bust - you just let Cache Flow take care of that. Straight cache, homey.
 
 ![http://blackathlete.net/wp-content/uploads/2013/12/cash.gif](http://blackathlete.net/wp-content/uploads/2013/12/cash.gif)
 

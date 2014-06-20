@@ -21,8 +21,11 @@ class CacheFlow
   # example file location: config/initializers/cache_flow.rb
   # example code:
   # CacheFlow.configure do |config|
-  #   config.hour_range_start = 17
-  #   config.hour_range_end = 20
+  #   config.default_options = {
+  #     time_zone: "Eastern Time (US & Canada)",
+  #     hour_range_start: 17,
+  #     hour_range_end: 20
+  #   }
   # end
 
   def self.configuration
