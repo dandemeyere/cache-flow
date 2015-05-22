@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'cache-flow'
-  s.version     = '0.0.5'
+  s.version     = '0.0.6'
   s.date        = '2014-06-18'
   s.summary     = 'A gem to manage when your cache expires.'
   s.description = 'Define a window of time to have all your cache expire randomly within.'
