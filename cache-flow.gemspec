@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://github.com/dandemeyere/cache-flow'
   s.license     = 'MIT'
   s.add_dependency('activesupport','>= 3.1.0')
-  s.add_dependency('i18n','0.7.0')
+  s.add_dependency('i18n', '>= 0.6.9')
   s.add_dependency('tzinfo', '0.3.38')
   s.add_development_dependency('rspec', '3.2.0')
 end
