@@ -35,7 +35,7 @@ describe CacheFlow do
 
   context '#generate_expiry' do
     it "should return seconds" do
-      expect(subject.generate_expiry.class).to eql Fixnum
+      expect(subject.generate_expiry.class).to eql Integer
     end
 
     it "should return seconds in the future" do
